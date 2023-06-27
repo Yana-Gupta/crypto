@@ -1,5 +1,9 @@
 const Footer = (): JSX.Element => {
-  return <>Footer</>;
+  return (
+    <div>
+      Footer
+    </div>
+  )
 };
 
 export default Footer;

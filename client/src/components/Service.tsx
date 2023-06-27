@@ -1,6 +1,8 @@
 const Service = (): JSX.Element => {
     return (
-        <> Service </>
+        <div>
+            Service
+        </div>
     )
 }
 

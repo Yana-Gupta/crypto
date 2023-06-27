@@ -11,10 +11,13 @@ import "./index.css";
 
 function App() {
   return (
-    <div>
-      <Navbar />
-      <Loader />
-      <p className="font-bold text-4xl">I am Yana</p>
+    <div className="min-h-screen">
+      <div className="gradient-bg-welcome">
+        <Navbar />
+        <Welcome />
+      </div>
+      <Service />
+      <Transaction />
       <Footer />
     </div>
   );

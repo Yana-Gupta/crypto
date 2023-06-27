@@ -1,7 +1,8 @@
 const Transaction = (): JSX.Element => {
     return(
-        <> Transaction
-        </>
+        <div>
+            Transaction
+        </div>
     )
 }
 
