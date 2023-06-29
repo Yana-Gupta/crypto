@@ -1,8 +1,11 @@
+import React, { useContext, useEffect } from "react";
 import { AiFillPlayCircle } from "react-icons/ai";
 import { SiEthereum } from "react-icons/si";
 import { BsInfoCircle } from "react-icons/bs";
 
 import { Loader } from "./";
+import { TransactionContext } from "../context/TransactionContext";
+
 
 const commanStyles: string =
   "min-h-[70px] sm:px-0 px-3 sm:min-w-[120px] md:min-w-[94px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white";
@@ -32,8 +35,9 @@ const Input = ({
 );
 
 const Welcome = (): JSX.Element => {
-  const connectWallet = async () => {};
-  const handleSubmit = async () => {};
+  const { connectWallet, disconnectWallet, connectedAccount } = useContext(TransactionContext);
+  const handleSubmit = async () => { };
+
   return (
     <div className="flex w-full items-center">
       <div className="flex md:flex-row flex-col md:p-20 py-12 px-4 w-full ">
@@ -48,10 +52,14 @@ const Welcome = (): JSX.Element => {
           </p>
           <button
             type="button"
-            onClick={connectWallet}
+            onClick={() => {
+              connectedAccount ? disconnectWallet() : connectWallet();
+            }}
             className="flex flex-row justify-center items-center my-5 bg-sky-600 p-3 rounded-full cursor-pointer hover:bg-sky-700 text-slate-50"
           >
-            <p className="text-base">Connect Wallet</p>
+            <p className="text-base">
+              {connectedAccount ? "Disconnect Wallet" : "Connect Wallet"}
+              </p>
           </button>
           <div className="grid sm:grid-cols-3 grid-cols-2 w-full mt-10">
             <div className={`rounded-tl-2xl ${commanStyles}`}>Reliability</div>
@@ -87,21 +95,21 @@ const Welcome = (): JSX.Element => {
               name="addressTo"
               type="text"
               value={""}
-              handleChange={() => {}}
+              handleChange={() => { }}
             />
             <Input
               placeholder="Amount (ETH)"
               name="amount"
               type="number"
               value={""}
-              handleChange={() => {}}
+              handleChange={() => { }}
             />
             <Input
               placeholder="Keyword (GIF)"
               name="keyword"
               type="text"
               value={""}
-              handleChange={() => {}}
+              handleChange={() => { }}
             />
 
             <Input
@@ -109,7 +117,7 @@ const Welcome = (): JSX.Element => {
               name="message"
               type="text"
               value={""}
-              handleChange={() => {}}
+              handleChange={() => { }}
             />
             <div className="h-[1px] w-full bg-gray-400 my-2" />
 
