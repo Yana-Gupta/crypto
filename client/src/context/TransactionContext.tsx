@@ -7,17 +7,14 @@ export const TransactionContext = React.createContext<any>({});
 
 const { ethereum } = window as any;
 
-const getEthereumContract = (): ethers.Contract => {
-    console.log(contractAddress)
-    console.log(contractABI)
+const getEthereumContract = (): any => {
 
-    const provider = new ethers.BrowserProvider(ethereum);
+    const provider = new ethers.providers.Web3Provider(ethereum);
     const signer = provider.getSigner();
+    const transactionsContract = new ethers.Contract(contractAddress, contractABI, signer);
 
-    const contract = new ethers.Contract(contractAddress, contractABI, signer);
-    console.log(provider, signer, contract)
 
-    return contract;
+    return transactionsContract;
 }
 
 export const TransactionProvider = ({ children }: any) => {
@@ -46,7 +43,6 @@ export const TransactionProvider = ({ children }: any) => {
 
     const handleChange = (e: any, name: string) => {
         setFormData((prev: any) => ({ ...prev, [name]: e.target.value }))
-        console.log(formData)
     }
 
 
@@ -72,29 +68,25 @@ export const TransactionProvider = ({ children }: any) => {
                 message
             } = formData;
             const transactionContract = getEthereumContract()
-            const parsedAmount: bigint = ethers.parseEther(amount)
-            console.log(currentAccount)
-            console.log("--------------")
-            console.log(addressTo)
+            const parsedAmount: ethers.utils.BigNumber = ethers.utils.parseEther(amount)
 
             await ethereum.request({
                 method: 'eth_sendTransaction',
                 params: [{
                     from: currentAccount,
                     to: addressTo,
-                    value: parsedAmount.toString(16),
+                    value: parsedAmount.toHexString(),
                     gas: (21000).toString(16),
                 }]
             });
 
             const transactionHash: any = await transactionContract.addToBlockchain(addressTo, parsedAmount, message, keyword);
 
-
             setIsLoading(true);
-            console.log(`Loading ${transactionHash.hash}`)
-            await transactionHash.wait()
+            console.log(`Loading ${transactionHash.hash}`);
+            await transactionHash.wait();
             setIsLoading(false);
-            console.log(`Done ${transactionHash.hash}`)
+            console.log(`Done ${transactionHash.hash}`);
 
             const transactionCount = await transactionContract.getTransactionCount();
             setTransactionCount(transactionCount.toNumber());
@@ -118,6 +110,7 @@ export const TransactionProvider = ({ children }: any) => {
             handleChange: handleChange,
             sendTransaction: sendTransaction,
             isLoading: isLoading,
+            transactionCount: transactionCount
         }}>
             {children}
         </TransactionContext.Provider>
