@@ -26,7 +26,6 @@ const Input = ({
   <input
     placeholder={placeholder}
     type={type}
-    value={value}
     name={name}
     step="0.0001"
     className="w-full rounded-md p-2 bg-transparent text-white border-none font-light text-sm outline-none white-glassmorphism my-3"
@@ -35,8 +34,22 @@ const Input = ({
 );
 
 const Welcome = (): JSX.Element => {
-  const { connectWallet, disconnectWallet, connectedAccount } = useContext(TransactionContext);
-  const handleSubmit = async () => { };
+  const { connectWallet,
+    disconnectWallet,
+    connectedAccount,
+    handleChange,
+    formData,
+    sendTransaction,
+    isLoading,
+  } = useContext(TransactionContext);
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    console.log(formData.value)
+    const { addressTo, amount, keyword, message } = formData;
+    e.preventDefault();
+
+    if (!addressTo || !amount || !keyword || !message) return alert("Please fill all the fields")
+    sendTransaction()
+  };
 
   return (
     <div className="flex w-full items-center">
@@ -59,7 +72,7 @@ const Welcome = (): JSX.Element => {
           >
             <p className="text-base">
               {connectedAccount ? "Disconnect Wallet" : "Connect Wallet"}
-              </p>
+            </p>
           </button>
           <div className="grid sm:grid-cols-3 grid-cols-2 w-full mt-10">
             <div className={`rounded-tl-2xl ${commanStyles}`}>Reliability</div>
@@ -95,21 +108,21 @@ const Welcome = (): JSX.Element => {
               name="addressTo"
               type="text"
               value={""}
-              handleChange={() => { }}
+              handleChange={handleChange}
             />
             <Input
               placeholder="Amount (ETH)"
               name="amount"
               type="number"
               value={""}
-              handleChange={() => { }}
+              handleChange={handleChange}
             />
             <Input
               placeholder="Keyword (GIF)"
               name="keyword"
               type="text"
               value={""}
-              handleChange={() => { }}
+              handleChange={handleChange}
             />
 
             <Input
@@ -117,14 +130,14 @@ const Welcome = (): JSX.Element => {
               name="message"
               type="text"
               value={""}
-              handleChange={() => { }}
+              handleChange={handleChange}
             />
             <div className="h-[1px] w-full bg-gray-400 my-2" />
 
-            {false ? (
+            {isLoading ? (
               <Loader />
             ) : (
-              <button type="button" onClick={handleSubmit} className="text-white w-full mt-2 border-[1px] p-2 border-slate-400  rounded-full cursor-pointor">
+              <button type="button" onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => handleSubmit(event)} className="text-white w-full mt-2 border-[1px] p-2 border-slate-400  rounded-full cursor-pointor">
                 Send Now
               </button>
             )}
