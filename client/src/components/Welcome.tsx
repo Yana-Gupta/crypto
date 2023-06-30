@@ -34,6 +34,7 @@ const Input = ({
 );
 
 const Welcome = (): JSX.Element => {
+  
   const { connectWallet,
     disconnectWallet,
     connectedAccount,
@@ -42,6 +43,7 @@ const Welcome = (): JSX.Element => {
     sendTransaction,
     isLoading,
   } = useContext(TransactionContext);
+
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     console.log(formData.value)
     const { addressTo, amount, keyword, message } = formData;
@@ -87,22 +89,34 @@ const Welcome = (): JSX.Element => {
             <div className={`rounded-br-2xl ${commanStyles}`}>Blockchain</div>
           </div>
         </div>
-        <div className="flex flex-col flex-1 items-center justify-start w-full md:mt-0 mt-10">
-          <div className="p-3 justify-end items-start flex-col rounded-xl h-40 sm:w-72 w-full my-5 eth-card white-glassmorphism">
-            <div className="flex justify-between flex-col w-full h-full">
-              <div className="flex justify-between items-start">
-                <div className="w-10 h-10 rounded-full border-2 border-white flex justify-center items-center">
-                  <SiEthereum fontSize={24} className="text-white" />
+        <div
+          className="flex flex-col flex-1 items-center justify-start w-full md:mt-0 mt-10">
+          <div
+            className="p-3 justify-end items-start flex-col rounded-xl h-40 sm:w-72 w-full my-5 eth-card white-glassmorphism">
+            <div
+              className="flex justify-between flex-col w-full h-full">
+              <div
+                className="flex justify-between items-start">
+                <div
+                  className="w-10 h-10 rounded-full border-2 border-white flex justify-center items-center">
+                  <SiEthereum
+                    fontSize={24}
+                    className="text-white" />
                 </div>
-                <BsInfoCircle fontSize={17} className="text-white" />
+                <BsInfoCircle
+                  fontSize={17}
+                  className="text-white" />
               </div>
               <div>
-                <p className="text-white font-light text-sm">Address</p>
-                <p className="text-white font-bold text-lg">Ethereum</p>
+                <p
+                  className="text-white font-light text-sm">Address</p>
+                <p
+                  className="text-white font-bold text-lg">Ethereum</p>
               </div>
             </div>
           </div>
-          <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism">
+          <div
+            className="p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism">
             <Input
               placeholder="Address To"
               name="addressTo"
@@ -137,7 +151,10 @@ const Welcome = (): JSX.Element => {
             {isLoading ? (
               <Loader />
             ) : (
-              <button type="button" onClick={(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => handleSubmit(event)} className="text-white w-full mt-2 border-[1px] p-2 border-slate-400  rounded-full cursor-pointor">
+              <button
+                type="button"
+                onClick={async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => await handleSubmit(event)}
+                className="text-white w-full mt-2 border-[1px] p-2 border-slate-400 rounded-full cursor-pointor">
                 Send Now
               </button>
             )}
