@@ -35,7 +35,6 @@ const Input = ({
 const Welcome = (): JSX.Element => {
 
   const { connectWallet,
-    disconnectWallet,
     currentAccount,
     handleChange,
     formData,
@@ -92,7 +91,7 @@ const Welcome = (): JSX.Element => {
         <div
           className="flex flex-col flex-1 items-center justify-start w-full md:mt-0 mt-10">
           <div
-            className="p-3 justify-end items-start flex-col rounded-xl h-48 sm:w-80 w-full my-5 eth-card white-glassmorphism">
+            className="p-3 justify-end items-start flex-col rounded-xl h-48 sm:w-80 w-full my-5 eth-card white-glassmorphism hover:shadow-2xl shadow-cyan-600">
             <div
               className="flex justify-between flex-col w-full h-full">
               <div

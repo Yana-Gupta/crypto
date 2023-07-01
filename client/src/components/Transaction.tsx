@@ -1,21 +1,33 @@
 import { useContext, useEffect, useState } from "react";
 import { TransactionContext } from "../context/TransactionContext";
 import { getTransactionsForConnectedAccount } from "../utils/index"
-
 import TransactionLoader from "./TransactionLoader";
 
+import { BsCheck2Circle } from "react-icons/bs";
+
+// usefecth hook 
+import { useFetch } from "../hooks/usefetch";
+
 const TransactionCard = ({ tx }: { tx: any }): JSX.Element => {
-    const bgColor: string = tx.status === "sent" ? "bg-[#FFA50080]/20" : "bg-[#00800080]/20";
-    console.log(parseInt(tx.amount.toString(16))/10**18)
+    const bgColor: string = tx.status === "sent" ? "bg-[#00800080]/20" : "bg-[#FFA50080]/20";
+
+    const gifUrl: string = useFetch({ keyword: tx.keyword });
+    const soldityDate: any = tx.timestamp * 1000;
+    const date = new Date(soldityDate)
+    const dateString = date.toDateString()
     return (
-        <div className={`${bgColor} m-4 flex flex-1 2xl:min-w-[450px]
+        <div className={`${bgColor} m-6 flex flex-1 2xl:min-w-[350px]
             2xl:max-w-[500px]
             sm:min-w-[270px]
             sm:max-w-[300px]
             min-w-full
-            flex-col p-3 rounded-md hover:drop-shadow-2xl`}>
-            <div className="flex flex-col items-center w-full mt-3">
-                <div className="w-full mb-6 p-2">
+            flex-col p-3 rounded-md hover:shadow-2xl`}>
+            <BsCheck2Circle fontSize={25} className="text-slate-500" />
+            <h2 className="text-center capitalize text-white text-4xl font-semibold mt-3 pt-4 pb-2 card-text-gradient">
+                {tx.status}
+            </h2>
+            <div className="flex flex-col items-center w-full">
+                <div className="w-full mb-1 mt-6 pt-2 px-2 pb-2">
                     <a
                         href={`https://goerli.etherscan.io/address/${tx.sender}`}
                         target="_blank"
@@ -35,7 +47,14 @@ const TransactionCard = ({ tx }: { tx: any }): JSX.Element => {
                         </p>
                     </a>
                     <p className="text-white text-base">
-                        Amount: {parseInt(tx.amount.toString(16))/10**18} ETH
+                        Amount: {parseInt(tx.amount.toString(16)) / 10 ** 18} ETH
+                    </p>
+                    <img
+                        className="w-full h-64 2x:h-96 rounded-md rounded-md shadow-lg object-cover"
+                        src={gifUrl} />
+
+                    <p className="mt-8 py-2 mx-4 text-white text-center bg-slate-900 rounded-full relative -top-10">
+                        {dateString}
                     </p>
                 </div>
             </div>
