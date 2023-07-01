@@ -1,6 +1,6 @@
 const Footer = (): JSX.Element => {
   return (
-    <div>
+    <div className="gradient-bg-footer text-white">
       Footer
     </div>
   )

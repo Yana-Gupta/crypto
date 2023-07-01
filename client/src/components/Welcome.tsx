@@ -15,7 +15,6 @@ const Input = ({
   name,
   handleChange,
   type,
-  value,
 }: {
   placeholder: string;
   name: string;
@@ -93,7 +92,7 @@ const Welcome = (): JSX.Element => {
         <div
           className="flex flex-col flex-1 items-center justify-start w-full md:mt-0 mt-10">
           <div
-            className="p-3 justify-end items-start flex-col rounded-xl h-40 sm:w-72 w-full my-5 eth-card white-glassmorphism">
+            className="p-3 justify-end items-start flex-col rounded-xl h-48 sm:w-80 w-full my-5 eth-card white-glassmorphism">
             <div
               className="flex justify-between flex-col w-full h-full">
               <div
@@ -111,8 +110,8 @@ const Welcome = (): JSX.Element => {
               <div>
                 <p
                   className="text-white font-md text-sm">{currentAccount
-                    ? currentAccount.substring(0, 6) + '.........' + currentAccount.substring(currentAccount.length - 5, 4)
-                    : null}
+                    ? currentAccount.slice(0, 6) + '.........' + currentAccount.slice(currentAccount.length - 5)
+                    : "Not Connected"}
                 </p>
                 <p
                   className="text-white font-bold text-lg">Ethereum</p>
