@@ -19,7 +19,7 @@ const getEthereumContract = (): any => {
 
 export const TransactionProvider = ({ children }: any) => {
 
-    const [currentAccount, setcurrentAccount] = useState(null);
+    const [currentAccount, setcurrentAccount] = useState<string | null>(null);
     const [formData, setFormData] = useState<any>({ addressTo: '', amount: '', keyword: '', message: '' });
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [transactionCount, setTransactionCount] =
@@ -97,6 +97,12 @@ export const TransactionProvider = ({ children }: any) => {
         }
     }
 
+    const getAllTransactions = async () => {
+        const transactionContract = getEthereumContract();
+        const transactions = await transactionContract.getAllTransaction();
+        return transactions
+    }
+
     useEffect(() => {
         checkIfWalletIsConnected();
     })
@@ -110,7 +116,8 @@ export const TransactionProvider = ({ children }: any) => {
             handleChange: handleChange,
             sendTransaction: sendTransaction,
             isLoading: isLoading,
-            transactionCount: transactionCount
+            transactionCount: transactionCount,
+            getAllTransactions: getAllTransactions,
         }}>
             {children}
         </TransactionContext.Provider>

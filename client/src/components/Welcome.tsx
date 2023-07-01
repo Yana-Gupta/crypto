@@ -34,10 +34,10 @@ const Input = ({
 );
 
 const Welcome = (): JSX.Element => {
-  
+
   const { connectWallet,
     disconnectWallet,
-    connectedAccount,
+    currentAccount,
     handleChange,
     formData,
     sendTransaction,
@@ -68,12 +68,13 @@ const Welcome = (): JSX.Element => {
           <button
             type="button"
             onClick={() => {
-              connectedAccount ? disconnectWallet() : connectWallet();
+              connectWallet();
             }}
             className="flex flex-row justify-center items-center my-5 bg-sky-600 p-3 rounded-full cursor-pointer hover:bg-sky-700 text-slate-50"
+            disabled={currentAccount ? true : false}
           >
             <p className="text-base">
-              {connectedAccount ? "Disconnect Wallet" : "Connect Wallet"}
+              {"Connect Wallet"}
             </p>
           </button>
           <div className="grid sm:grid-cols-3 grid-cols-2 w-full mt-10">
@@ -109,7 +110,10 @@ const Welcome = (): JSX.Element => {
               </div>
               <div>
                 <p
-                  className="text-white font-light text-sm">Address</p>
+                  className="text-white font-md text-sm">{currentAccount
+                    ? currentAccount.substring(0, 6) + '.........' + currentAccount.substring(currentAccount.length - 5, 4)
+                    : null}
+                </p>
                 <p
                   className="text-white font-bold text-lg">Ethereum</p>
               </div>
