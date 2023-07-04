@@ -1,7 +1,7 @@
-import { Key, useState } from "react";
-import { HiMenuAlt4 } from "react-icons/hi";
-import { AiOutlineClose } from "react-icons/ai";
-import LOGO from "../../assets/images/Logo.png"
+import { Key, useState } from 'react';
+import { HiMenuAlt4 } from 'react-icons/hi';
+import { AiOutlineClose } from 'react-icons/ai';
+import LOGO from '../../assets/images/Logo.png';
 
 const NavbarItem = ({
   title,
@@ -21,7 +21,7 @@ const Navbar = (): JSX.Element => {
         <img src={LOGO} alt="LOGO" className="w-32 cursor-pointer text-white" />
       </div>
       <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial">
-        {["Market", "Exchange", "Wallet"].map((item: String, index: Key) => {
+        {['Market', 'Exchange', 'Wallet'].map((item: String, index: Key) => {
           return <NavbarItem key={index} title={item} classProps="text-lg" />;
         })}
         <li className="bg-sky-600 py-2 px-7 rounded-full cursor-pointer hover:bg-sky-700 mx-10">
@@ -44,7 +44,7 @@ const Navbar = (): JSX.Element => {
                 onClick={() => setToggleMenu(false)}
               />
             </li>
-            {["Market", "Exchange", "Wallet"].map(
+            {['Market', 'Exchange', 'Wallet'].map(
               (item: String, index: Key) => {
                 return (
                   <NavbarItem

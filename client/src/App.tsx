@@ -1,13 +1,6 @@
-import {
-  Navbar,
-  Welcome,
-  Footer,
-  Transaction,
-  Service,
-  Loader,
-} from "./components";
+import { Navbar, Welcome, Footer, Transaction, Service } from './components';
 
-import "./index.css";
+import './index.css';
 
 function App() {
   return (
