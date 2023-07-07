@@ -8,7 +8,7 @@ export const getTransactionsForConnectedAccount = async (
       transactions.push({ ...accounts[i], status: 'sent' });
     }
     if (accounts[i].receiver.toLowerCase() == connectedAccount.toLowerCase()) {
-      transactions.push({ ...accounts[i], status: 'sent' });
+      transactions.push({ ...accounts[i], status: 'recieved' });
     }
   }
   return transactions;

@@ -10,7 +10,7 @@ import { useFetch } from '../hooks/usefetch';
 
 const TransactionCard = ({ tx }: { tx: any }): JSX.Element => {
   const bgColor: string =
-    tx.status === 'sent' ? 'bg-[#00800080]/20' : 'bg-[#FFA50080]/20';
+    tx.status === 'sent' ? 'bg-[#00800080]/20' : 'bg-[#fd0addf5]/20';
 
   const gifUrl: string = useFetch({ keyword: tx.keyword });
   const soldityDate: any = tx.timestamp * 1000;
