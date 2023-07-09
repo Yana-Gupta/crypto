@@ -70,7 +70,7 @@ export const TransactionProvider = ({ children }: any) => {
       if (!ethereum) return alert('Please install metamask');
       const { addressTo, amount, keyword, message } = formData;
       const transactionContract = getEthereumContract();
-      const parsedAmount: ethers.BigNumber =
+      const parsedAmount: ethers.utils.BigNumber =
         ethers.utils.parseEther(amount);
 
       await ethereum.request({
