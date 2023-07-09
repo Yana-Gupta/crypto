@@ -58,9 +58,9 @@ export const TransactionProvider = ({ children }: any) => {
         method: 'eth_requestAccounts',
       });
       await setcurrentAccount(accounts);
-      console.log(currentAccount);
+      // console.log(currentAccount);
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       throw new Error('No account found');
     }
   };
@@ -93,16 +93,17 @@ export const TransactionProvider = ({ children }: any) => {
       );
 
       setIsLoading(true);
-      console.log(`Loading ${transactionHash.hash}`);
+      // console.log(`Loading ${transactionHash.hash}`);
       await transactionHash.wait();
       setIsLoading(false);
-      console.log(`Done ${transactionHash.hash}`);
+      // console.log(`Done ${transactionHash.hash}`);
 
       const transactionCount = await transactionContract.getTransactionCount();
       setTransactionCount(transactionCount.toNumber());
-      console.log(transactionCount.toNumber());
+      // console.log(transactionCount.toNumber());
     } catch (e) {
-      console.error(e);
+      return alert('Transaction failed');
+      // console.error(e);
     }
   };
 

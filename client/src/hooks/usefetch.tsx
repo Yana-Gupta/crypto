@@ -12,9 +12,11 @@ export const useFetch = ({ keyword }: { keyword: string }) => {
           .join('')}&limit=1`
       );
       const { data } = await responce.json();
-      console.log(data);
-
       setGifUrl(data[0]?.images?.downsized_medium?.url);
+      if (data.length == 0) {
+        setGifUrl('https://media.giphy.com/media/u1ebtrL6vnKf2dYfYr/giphy.gif');
+      }
+
     } catch (e) {
       setGifUrl('https://media.giphy.com/media/9xjTE4YYL0nm1fGdCl/giphy.gif');
     }
