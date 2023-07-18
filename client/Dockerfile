@@ -1,6 +1,8 @@
-FROM node:alpine3.18
+FROM node:lts-alpine3.14
+RUN mkdir /app
+COPY package*.json /app
 WORKDIR /app
-COPY ./package.json /app
-RUN npm install 
-COPY . ./app
+RUN npm ci
+COPY . .
+EXPOSE 3000
 CMD ["npm", "run", "dev"]
