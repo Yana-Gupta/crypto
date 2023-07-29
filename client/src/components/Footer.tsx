@@ -15,9 +15,6 @@ const Footer = (): JSX.Element => {
             Exchange
           </p>
           <p className="text-white text-base text-center mx-2 cursor-pointer">
-            Tutorials
-          </p>
-          <p className="text-white text-base text-center mx-2 cursor-pointer">
             Wallets
           </p>
         </div>
