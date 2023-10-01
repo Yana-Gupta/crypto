@@ -19,9 +19,6 @@ module.exports = {
         'slide-in': 'slide-in 0.5s ease-out',
       },
     },
-    screens: {
-      'md' :  '870px' ,
-    },
   },
   plugins: [],
 };
