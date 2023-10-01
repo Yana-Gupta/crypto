@@ -59,7 +59,7 @@ const Welcome = (): JSX.Element => {
           <h1 className="text-3xl sm:text-5xl text-white font-medium py-1">
             Send Crypto
             <br />
-            <span className='sm:text-4xl lg:text-5xl'>across the world</span>
+            across the world
           </h1>
           <p className="text-left mt-5 text-white font-light text-base">
             Explore the crypto world. Buy and Sell crypto on Trade-Off.
@@ -87,7 +87,7 @@ const Welcome = (): JSX.Element => {
             <div className={`rounded-br-2xl ${commanStyles}`}>Blockchain</div>
           </div>
         </div>
-        <div className="flex flex-col flex-1 items-center md:items-end justify-start w-full md:mt-0 mt-10  ">
+        <div className="flex flex-col flex-1 items-center  justify-start w-full md:mt-0 mt-10  ">
           <div className="p-3 justify-end items-start flex-col rounded-xl h-48 w-80   max-w-sm my-5 eth-card white-glassmorphism hover:shadow-2xl shadow-cyan-600">
             <div className="flex justify-between flex-col w-full h-full">
               <div className="flex justify-between items-start">
