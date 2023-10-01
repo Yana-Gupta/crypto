@@ -54,8 +54,8 @@ const Welcome = (): JSX.Element => {
 
   return (
     <div className="flex w-full items-center">
-      <div className="flex md:flex-row flex-col md:p-20 py-12 px-4 w-full ">
-        <div className="flex flex-1 flex-col md:mr-10 w-full">
+      <div className="flex md:flex-row flex-col md:p-20 py-12 px-4 w-full justify-center items-center">
+        <div className=" flex flex-1 flex-col md:mr-10 w-[75%] md:w-full">
           <h1 className="text-3xl sm:text-5xl text-white font-medium py-1">
             Send Crypto
             <br />
@@ -87,7 +87,7 @@ const Welcome = (): JSX.Element => {
             <div className={`rounded-br-2xl ${commanStyles}`}>Blockchain</div>
           </div>
         </div>
-        <div className="flex flex-col flex-1 items-center justify-start w-full md:mt-0 mt-10">
+        <div className="flex flex-col flex-1 items-center justify-start w-[80%] md:mt-0 mt-10 md:w-full">
           <div className="p-3 justify-end items-start flex-col rounded-xl h-48 sm:w-80 w-full my-5 eth-card white-glassmorphism hover:shadow-2xl shadow-cyan-600">
             <div className="flex justify-between flex-col w-full h-full">
               <div className="flex justify-between items-start">
