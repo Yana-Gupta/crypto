@@ -28,10 +28,10 @@ const ServiceCard = ({
 
 const Service = (): JSX.Element => {
   return (
-    <div className="flex w-full flex-col md:flex-row justify-center items-center gradient-bg-services px-4">
-      <div className="flex-1 flex md:flex-row flex-col items-center justify-between md:p-20 py-12 px-2">
+    <div className="flex w-full flex-col md:flex-row justify-center items-center gradient-bg-services px-4 sm:px-12 lg:px-24">
+      <div className="flex-1 flex md:flex-row flex-col items-center justify-between  py-12 px-2">
         <div className="flex-1 flex flex-col justify-start items-start">
-          <h1 className="textwhite text-5xl py-2 text-gradient">
+          <h1 className="text-white text-5xl py-2 text-gradient">
             Services that we use
             <br />
             continue to improve

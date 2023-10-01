@@ -16,7 +16,7 @@ const NavbarItem = ({
 const Navbar = (): JSX.Element => {
   const [toggleMenu, setToggleMenu] = useState<boolean>(false);
   return (
-    <nav className="w-full flex flex md:justify-center h-20 justify-between items-center p-4">
+    <nav className="w-full flex md:justify-center h-20 justify-between items-center px-4">
       <div className="md:flex-[0.5] flex-initial justify-center items-center">
         <img src={LOGO} alt="LOGO" className="w-32 cursor-pointer text-white" />
       </div>

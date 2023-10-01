@@ -3,11 +3,11 @@ import Logo from '../../assets/images/Logo.png';
 const Footer = (): JSX.Element => {
   return (
     <div className="w-full flex md:justify-center justify-between items-center flex-col gradient-bg-footer text-white">
-      <div className="w-full flex flex-col md:flex-row justify-between items-center my-4">
-        <div className="flex flex-[0.5] justify-center items-center">
+      <div className="w-full flex flex-col md:flex-row justify-center items-center my-4">
+        <div className="flex flex-[0.5]  justify-center items-center ">
           <img src={Logo} alt="Logo" className="w-32" />
         </div>
-        <div className="flex flex-1 justify-evenly items-center flex-wrap sm:mt-0 mt-5 w-full">
+        <div className="flex flex-1 justify-center gap-3 lg:gap-8 items-center flex-wrap sm:mt-0 mt-5 w-full">
           <p className="text-white text-base text-center mx-2 cursor-pointer">
             Market
           </p>
@@ -18,7 +18,7 @@ const Footer = (): JSX.Element => {
             Wallets
           </p>
         </div>
-        <div className="flex justify-center align-center items-center flex-col mt-5 xl:mr-32">
+        <div className="flex justify-center align-center items-center flex-col mt-5 px-4 lg:px-12 xl:mr-32">
           <p className="text-white text-sm text-center">
             Come join us and hear for the unexpected miracle
           </p>
