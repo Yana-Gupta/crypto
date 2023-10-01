@@ -2,6 +2,11 @@
 module.exports = {
   content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
   theme: {
+    screens:{
+      'sm': '576px',
+      'md': '845px',
+      'lg': '1200px'
+    },
     extend: {
       keyframes: {
         'slide-in': {
